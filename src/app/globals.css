@@ -104,8 +104,256 @@ input {
   background: #35a5d1;
 }
 
+.full-section {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
+.landing-hero {
+  min-height: 100svh;
+}
+
+.nav-link {
+  position: relative;
+  transition: color 180ms ease;
+}
+
+.nav-link::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+  opacity: 0;
+  transform: scaleX(0.5);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.interactive-card {
+  position: relative;
+  display: block;
+  border-radius: 8px;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    opacity 220ms ease,
+    background-color 220ms ease;
+}
+
+.interactive-card:hover,
+.interactive-card:focus-visible {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(15, 89, 121, 0.2);
+}
+
+.interactive-card:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 4px;
+}
+
+.step-card {
+  display: flex;
+  min-height: 132px;
+  align-items: flex-start;
+  gap: 16px;
+  border: 1px solid rgba(53, 164, 207, 0.18);
+  background: rgba(255, 255, 255, 0.54);
+  padding: 22px;
+}
+
+.step-card:hover,
+.step-card:focus-visible {
+  border-color: rgba(53, 164, 207, 0.45);
+  background: #fff;
+}
+
+.feature-card {
+  min-height: 250px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: #fff;
+  padding: clamp(24px, 4vw, 34px);
+  color: #5b6068;
+}
+
+.feature-card:hover,
+.feature-card:focus-visible {
+  border-color: #b9e9f7;
+}
+
+.testimonial-card {
+  min-height: 310px;
+  border-width: 1px;
+  background: #fff;
+  padding: clamp(28px, 4vw, 42px) clamp(20px, 3vw, 34px);
+  box-shadow: 0 20px 50px rgba(39, 107, 137, 0.08);
+}
+
+.testimonial-card:hover,
+.testimonial-card:focus-visible {
+  opacity: 1;
+}
+
+.hero-chip {
+  position: absolute;
+  left: 11%;
+  bottom: 105px;
+  z-index: 24;
+  width: min(250px, 26vw);
+  background: #fff;
+  padding: 20px;
+  text-align: left;
+  color: #6b7280;
+  box-shadow: 0 16px 40px rgba(11, 70, 96, 0.18);
+}
+
+.hero-orbit {
+  position: absolute;
+  left: 50%;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.hero-orbit-outer {
+  top: 34px;
+  width: min(480px, 72vw);
+  height: min(480px, 72vw);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.hero-orbit-inner {
+  top: 58px;
+  width: min(410px, 62vw);
+  height: min(410px, 62vw);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.hero-person {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 18;
+  width: clamp(280px, 35vw, 430px);
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.hero-phone-link {
+  position: absolute;
+  left: 58%;
+  bottom: 0;
+  z-index: 26;
+  width: clamp(150px, 17vw, 238px);
+  border-radius: 34px;
+}
+
+.hero-growth {
+  position: absolute;
+  right: -6%;
+  bottom: 0;
+  z-index: 7;
+  width: clamp(250px, 36vw, 520px);
+  height: auto;
+  pointer-events: none;
+}
+
+.tether-token {
+  position: absolute;
+  z-index: 22;
+  width: clamp(44px, 5vw, 72px);
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 16px 18px rgba(13, 89, 104, 0.18));
+}
+
+.tether-token-left {
+  left: 9%;
+  top: 25%;
+}
+
+.tether-token-top {
+  right: 23%;
+  top: 9%;
+}
+
+.tether-token-right {
+  right: 9%;
+  top: 34%;
+}
+
 @media (max-width: 900px) {
   .desktop-only {
     display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-visual {
+    height: 430px;
+    margin-top: 28px;
+  }
+
+  .hero-orbit-outer {
+    top: 70px;
+    width: 330px;
+    height: 330px;
+  }
+
+  .hero-orbit-inner {
+    top: 95px;
+    width: 270px;
+    height: 270px;
+  }
+
+  .hero-person {
+    width: min(360px, 92vw);
+  }
+
+  .hero-growth {
+    right: 50%;
+    bottom: -8px;
+    width: min(360px, 88vw);
+    transform: translateX(50%);
+    opacity: 0.95;
+  }
+
+  .tether-token-top,
+  .tether-token-right {
+    display: none;
+  }
+
+  .tether-token-left {
+    left: 6%;
+    top: 24%;
+    width: 46px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  .hero-chip {
+    left: 0;
+    bottom: 92px;
+    width: 230px;
+  }
+
+  .hero-phone-link {
+    left: 60%;
+    width: 180px;
+  }
+
+  .hero-growth {
+    right: -16%;
+    width: 420px;
   }
 }
